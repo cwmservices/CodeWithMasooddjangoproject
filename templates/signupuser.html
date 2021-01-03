@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}signupuser | CodeWithMasood{% endblock title%}
+    {% block body%}
+        <div class="contactus-container signupuser">
+            <h>Signup User</h>
+            <form action="/signupuser" method="post">
+                {% csrf_token %}
+                <input type="text" name="first_name" placeholder="Enter Your First Name..." required>
+                <input type="text" name="last_name" placeholder="Enter Your Last Name..." required>
+                <input type="text" name="user_name" placeholder="Enter Your Name..." required>
+                <input type="email" name="email" placeholder="Enter Your Email..." required>
+                <input type="password" name="pass1" placeholder="Enter Your Password..." required>
+                <input type="password" name="pass2" placeholder="Please Confirm Your Password..." required>
+                <input type="submit">
+            </form>
+        </div>
+        
+    {% endblock body%}

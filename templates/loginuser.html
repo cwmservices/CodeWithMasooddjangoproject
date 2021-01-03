@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}loginuser | CodeWithMasood{% endblock title%}
+    {% block body%}
+        <div class="contactus-container loginuser">
+            <h>Login User</h>
+            <form action="/loginuser" method="post">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Enter Your Name..." required>
+                <input type="password" name="password" placeholder="Enter Your password..." required>
+                <input type="submit">
+            </form>
+        </div>
+        
+    {% endblock body%}

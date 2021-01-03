@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title%}</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        nav{
+            background-color: rgb(1, 46, 1);
+            display: flex;
+            color:honeydew;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            justify-content:space-around;
+            padding:20px;
+        }
+        .right-div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        ul li a{
+            text-decoration: none;
+            margin-right: 15px;
+            color: honeydew;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+        }
+        ul li{
+            list-style: none;
+        }
+        .portfolio{
+            height: 500px;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: flex-end;
+        }
+        .container-box{
+            padding:20px;
+            width: 15%;
+            height: 270px;
+            background-color: rgb(1, 46, 1) ;
+            padding:30px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .container-box p{
+            padding:20px 0px;
+        }
+        .btn-article{
+            padding:10px;
+            background-color:rgb(85, 146, 0);
+            border-radius: 10px;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        .user{
+            color: tomato;
+        }
+        footer{
+            margin-top:98px;
+            background-color: rgb(1, 46, 1);
+            padding:20px;
+            text-align: center;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .aboutus-container{
+            height: 495px;
+            color: white;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .aboutus-container-left-div img{
+            border-radius: 50%;
+            padding: 10px 0px;
+        }
+        .aboutus-container-left-div{
+            width: 400px;
+            text-align: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: white;
+            background-color:rgb(0, 80, 0);
+            padding: 30px;
+            border-radius: 20px;
+        }
+        .aboutus-container-right-div{
+            padding: 30px;
+            border-radius: 20px;
+            width: 400px;
+            background-color: rgb(0, 80, 0);
+            padding: 30px;
+            border-radius: 20px;
+        }
+        .aboutus-container-right-div p{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            text-align: center;
+            color: rgb(2, 58, 0);
+            padding-bottom: 10px;
+            color: white;
+        }
+        .aboutus-container-right-div h1{
+            color: white;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .contactus-container{
+            height: 495px;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .contactus-container h{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: rgb(197, 0, 0);
+            font-size: 30px;
+            font-weight: bolder;
+        }
+        .contactus-container input{
+            display: block;
+            width: 700px;
+            height: 50px;
+            margin: 25px;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+        input[type='submit']{
+            background-color: rgb(8, 68, 0);
+            color:white;
+        }
+        input[type="submit"]{
+            width: 705px;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .message{
+            background-color: tomato;
+            padding: 20px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: white;
+        }
+        .signupuser input{
+            height: 50px;
+            width: 600px;
+        }
+        .loginuser input{
+            height: 40px;
+            width: 400px;
+        }
+        .signupuser h{
+            margin-top: 110px;
+        }
+        .top-content{
+            padding-left:469px;
+            font-family:Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            margin-top: 30px;
+    
+
+        }
+        .top-content h1{
+            animation: type 5s steps(36);
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 4px solid black;
+            width: 34ch;
+            animation-iteration-count: infinite;
+        }
+        @keyframes type {
+            0%{
+                width: 0ch;
+            }
+            100%{
+                width: 36ch;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="left-div">
+            <h1>CodeWithMasood</h1>
+        </div>
+        <ul class="right-div">
+            <li><a href="/">Home</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="/contactus">contact Us</a></li>
+            {%if user.is_authenticated %}
+            <li><a class="user" href="/logoutuser">logoutUser</a></li>
+            {%else%}
+            <li><a class="user" href="/loginuser">LogIn</a></li>
+            <li><a class="user" href="/signupuser">SignUp</a></li>
+            {%endif%}
+        </ul>
+    </nav>
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="message">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %} 
+
+    {% block body %}{% endblock body%}
+
+    <footer>
+        @copyright CodeWithMasood
+    </footer>
+</body>
+</html>

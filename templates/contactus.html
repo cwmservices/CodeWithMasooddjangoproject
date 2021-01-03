@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}contact Us | CodeWithMasood{% endblock title%}
+    {% block body%}
+        <div class="contactus-container">
+            <h>Contact us</h>
+            <form action="/contactus" method="post">
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="Enter Your Name..." required>
+                <input type="email" name="email" placeholder="Enter Your Email..." required>
+                <input type="TextField" name="message" placeholder="Your Message..." required>
+                <input type="submit">
+            </form>
+        </div>
+        
+    {% endblock body%}
